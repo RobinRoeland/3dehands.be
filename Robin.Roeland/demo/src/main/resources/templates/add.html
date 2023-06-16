@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product</title>
+</head>
+<body>
+    <button onclick="location.href='/index'">Derdehands.be</button><button onclick="location.href='/about'">about</button>
+    <h1>add product</h1>
+    <input type="text" placeholder="categorie" id="categorie" required/>
+    <input type="text" placeholder="name" id="name" required/>
+    <input type="text" placeholder="omschrijving" id="omschrijving" required/>
+    <input type="email" placeholder="email" id="email" required/>
+    <input type="text" placeholder="username" id="username" required/>
+    <input type="number" placeholder="price" id="price" required/>
+    <button onclick="add()">Add</button>
+</body>
+<script>
+    function add(){
+        location.href='/products/add?name=' + document.getElementById('name').value + '&categorie=' + document.getElementById('categorie').value + '&omschrijving=' + document.getElementById('omschrijving').value + '&email=' + document.getElementById('email').value + '&username=' + document.getElementById('username').value + '&price=' + document.getElementById('price').value;
+        location.href='/index'
+    }
+</script>
+</html>

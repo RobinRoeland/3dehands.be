@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body onload="requestproduct(getUrlParameter('id'))">
+<button onclick="location.href='/index'">Derdehands.be</button><button onclick="location.href='/about'">about</button>
+<h1>Details</h1>
+<table id="product" cellspacing="20px">
+    <tr><th>catergorie</th><th>naam</th><th>omschrijving</th><th>price</th><th>username</th><th>email</th></tr>
+</table>
+</body>
+<script>
+const lijst = document.getElementById("product");
+async function requestproduct(id) {
+    const events = await fetch('http://localhost:8080/products/' + id);
+    const myJson = await events.json();
+    myEventJson = myJson;
+
+    lijst.innerHTML += "<tr><td>" + myJson.categorie + "</td><td>" + myJson.name + "</td><td>" + myJson.omschrijving + "</td><td>"+ myJson.price + "</td><td>" + myJson.username + "</td><td>" + myJson.email + "</td></tr>";
+}
+
+function getUrlParameter(sParam){
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam)
+        {
+            return sParameterName[1];
+        }
+    }
+}
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Producten</title>
+</head>
+<body onload="requestproducts()">
+    <button onclick="location.href='/about'">about</button>
+    <h1>producten</h1>
+    <table id="producten" cellspacing="20px">
+        <tr><th>naam</th><th>prijs</th><th>details</th></tr>
+    </table>
+    <button onclick="location.href='/add'">add item</button>
+</body>
+<script>
+const lijst = document.getElementById("producten");
+
+async function requestproducts() {
+    const events = await fetch('http://localhost:8080/products');
+    const myJson = await events.json();
+    myEventJson = myJson;
+
+    for(var i = 0; i < myJson.length; i++){
+        lijst.innerHTML += "<tr><td>" + myJson[i].name + "</td><td>" + myJson[i].price + "</td><td><a href='/detail?id=" + myJson[i].id + "'>details</a></td></tr>";
+    }
+}
+</script>
+</html>
